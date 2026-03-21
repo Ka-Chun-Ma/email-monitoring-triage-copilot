@@ -14,7 +14,7 @@ See [`docs/evaluation-sample-set.md`](../docs/evaluation-sample-set.md) (CSV-fir
 
 | File | Role |
 | ---- | ---- |
-| `sample_issues.csv` | Minimum columns: `issue_id`, `environment`, `detected_at`, `source_system`, `raw_message_text`, `object_affected`, `module_or_domain`, `severity_hint`, **`broad_category`**. |
+| `sample_issues.csv` | **v1 starter:** 8 rows with the recommended category mix (replace with real alerts, then add rows to reach 12–15). See [`docs/sample-issues-workflow.md`](../docs/sample-issues-workflow.md). |
 | `known_patterns.json` | Deterministic patterns matched against normalized text. |
 | `kb_ticket_mapping.json` | Grounded KB / ticket / owner mappings (no fabricated references). |
 

@@ -8,6 +8,7 @@ Deterministic-first, human-in-the-loop workflow to reduce triage and daily monit
 | -------- | ------- |
 | [docs/success-definition.md](docs/success-definition.md) | Success criteria and MVP Definition of Done (v1.2) |
 | [docs/evaluation-sample-set.md](docs/evaluation-sample-set.md) | Fixed evaluation sample set rules and canonical `data/` artifacts |
+| [docs/sample-issues-workflow.md](docs/sample-issues-workflow.md) | CSV v1 steps, `broad_category` enum, pitfalls, pattern/mapping order |
 | [docs/mvp-boundary.md](docs/mvp-boundary.md) | In-scope / out-of-scope for MVP |
 | [docs/failure-modes.md](docs/failure-modes.md) | Acceptable vs unacceptable failures |
 

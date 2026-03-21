@@ -2,6 +2,8 @@
 
 **Related:** MVP pass/fail criteria and Definition of Done are in [`docs/success-definition.md`](success-definition.md) (v1.2).
 
+**Operational steps and `broad_category` enum:** [`docs/sample-issues-workflow.md`](sample-issues-workflow.md).
+
 ## Purpose
 This document defines the fixed evaluation sample set used to assess whether the MVP is complete.
 
@@ -132,7 +134,7 @@ Each record in the evaluation sample set should include, at minimum:
 - object_affected
 - module_or_domain
 - severity_hint
-- **broad_category** (evaluation / review only; labels one of the five composition categories above so humans can audit coverage and expected posture)
+- **broad_category** (evaluation / review only; use the five allowed values in [`docs/sample-issues-workflow.md`](sample-issues-workflow.md): `known_recurring`, `likely_new`, `review_needed`, `missing_mapping`, `safety_challenge`)
 
 `broad_category` may stay out of the core runtime schema if you prefer, but it is valuable **now** for cross-checking agreed-sample coverage and acceptance.
 
@@ -217,7 +219,7 @@ To move from methodology to runnable, testable validation, freeze each round usi
 
 | Artifact | Role |
 | -------- | ---- |
-| `data/sample_issues.csv` | **Source of truth** for the 12–18 acceptance rows (one row per issue). Include a `broad_category` column for human review (values aligned with this document’s categories). |
+| `data/sample_issues.csv` | **Source of truth** for the acceptance rows (start with **8** for a fast quality pass; extend to **12–15** for full v1). Include `broad_category` (allowed values in [`docs/sample-issues-workflow.md`](sample-issues-workflow.md)). |
 | `data/known_patterns.json` | Deterministic pattern definitions matched against normalized text (drives recurring vs new vs review). |
 | `data/kb_ticket_mapping.json` | Grounded KB / ticket / owner hints keyed by pattern or group (no invented references). |
 
@@ -226,4 +228,4 @@ To move from methodology to runnable, testable validation, freeze each round usi
 **After the CSV exists:** decide which recurring families deserve extraction into `known_patterns.json`, which rows should **deliberately remain unmatched** by v1 patterns, and which groups are stable enough to justify entries in `kb_ticket_mapping.json`. The CSV tells you what the JSON shapes must support; the reverse is not true.
 
 ## Version
-v1.2
+v1.3
