@@ -28,6 +28,15 @@ The agreed sample set for MVP should contain 12 to 18 records.
 
 This is large enough to include meaningful variety and small enough for manual review.
 
+## CSV-first build philosophy (why the sample file leads)
+The highest-leverage artifact is **`data/sample_issues.csv`**, not the JSON files.
+
+- **Patterns should grow from real operational variation in the frozen rows**, not from imagined families written ahead of time.
+- **Mappings must not precede stable pattern groups**, or you hard-code responsibility boundaries before you know what the sample actually demands.
+- A good first CSV makes validation **falsifiable**: you are testing a useful triage skeleton against messy reality, not a rule set you already trained yourself to satisfy.
+
+Version 1 of the CSV should prioritize **representativeness over completeness**. It is acceptable to be imperfect if the mix is honest.
+
 ## Required composition
 The fixed evaluation sample set must include all categories below.
 
@@ -103,6 +112,8 @@ Examples:
 - severity pattern clearly escalated compared with historical case
 - partial token overlap that should not trigger a safe recurring label
 
+**Why the last two categories matter most:** known recurring rows are necessary but often easy to satisfy. **Missing-mapping** and **dangerous look-alike** cases force the system to show whether it **fails conservatively and visibly** or **pretends to understand**—the difference between an honest MVP and a risky demo.
+
 ## Minimum sample quality rules
 The agreed sample set should satisfy all of the following:
 - includes at least one record from each required category
@@ -121,6 +132,9 @@ Each record in the evaluation sample set should include, at minimum:
 - object_affected
 - module_or_domain
 - severity_hint
+- **broad_category** (evaluation / review only; labels one of the five composition categories above so humans can audit coverage and expected posture)
+
+`broad_category` may stay out of the core runtime schema if you prefer, but it is valuable **now** for cross-checking agreed-sample coverage and acceptance.
 
 Optional fields may be included if useful for manual review, but the fixed evaluation set should not depend on hidden metadata that the MVP pipeline does not receive.
 
@@ -209,5 +223,7 @@ To move from methodology to runnable, testable validation, freeze each round usi
 
 **Suggested build order:** (1) lock rows and `broad_category` in `data/sample_issues.csv`, (2) derive or align `known_patterns.json`, (3) align `kb_ticket_mapping.json` to matched groups. Until these exist, treat the sample set as **not yet frozen** for that round.
 
+**After the CSV exists:** decide which recurring families deserve extraction into `known_patterns.json`, which rows should **deliberately remain unmatched** by v1 patterns, and which groups are stable enough to justify entries in `kb_ticket_mapping.json`. The CSV tells you what the JSON shapes must support; the reverse is not true.
+
 ## Version
-v1.1
+v1.2

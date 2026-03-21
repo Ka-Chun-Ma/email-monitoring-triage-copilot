@@ -2,10 +2,30 @@
 
 This directory holds the **frozen** acceptance sample and supporting mappings for a validation round.
 
-| File | Status |
-| ---- | ------ |
-| `sample_issues.csv` | Add 12–18 rows; include `broad_category` per [`docs/evaluation-sample-set.md`](../docs/evaluation-sample-set.md). |
-| `known_patterns.json` | Pattern definitions for deterministic matching. |
+## Order matters
+
+1. **`sample_issues.csv`** first — source of truth (12–18 rows, representative mix).
+2. **`known_patterns.json`** second — derived from real families in the CSV, not guessed early.
+3. **`kb_ticket_mapping.json`** last — only for groups that are stable enough to ground hints.
+
+See [`docs/evaluation-sample-set.md`](../docs/evaluation-sample-set.md) (CSV-first philosophy and canonical artifacts).
+
+## Files
+
+| File | Role |
+| ---- | ---- |
+| `sample_issues.csv` | Minimum columns: `issue_id`, `environment`, `detected_at`, `source_system`, `raw_message_text`, `object_affected`, `module_or_domain`, `severity_hint`, **`broad_category`**. |
+| `known_patterns.json` | Deterministic patterns matched against normalized text. |
 | `kb_ticket_mapping.json` | Grounded KB / ticket / owner mappings (no fabricated references). |
 
-See **Canonical artifacts** in [`docs/evaluation-sample-set.md`](../docs/evaluation-sample-set.md).
+## Intentional coverage (five spines)
+
+A valid agreed sample includes rows that exercise:
+
+- known recurring  
+- obvious / likely new  
+- ambiguous grey zone (review-needed)  
+- missing mapping  
+- dangerous look-alike (safety challenge)  
+
+The last two are where the MVP proves **honest uncertainty** vs **false confidence**.
