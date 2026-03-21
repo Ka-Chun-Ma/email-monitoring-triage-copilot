@@ -14,8 +14,9 @@ You are not merely “preparing data for the system.” You are using the sample
 
 **Goal:** strong representativeness, not perfection.
 
-- **First round:** **8 rows** (fast feedback on schema and mix).  
-- **Full v1:** extend to **12–15 rows** (avoid jumping to 18 in the first pass; **review quality beats count**).
+- **Pilot (v0.1):** **8 rows** (fast feedback on schema and mix).  
+- **v1 agreed candidate:** **12 rows** with the distribution below (stress-test failure posture before freezing).  
+- **Full validation round:** up to **12–15 rows** (avoid jumping to 18 in the first pass; **review quality beats count**).
 
 ### Required columns
 
@@ -30,6 +31,10 @@ You are not merely “preparing data for the system.” You are using the sample
 | `module_or_domain` | Area (ETL, orchestrator, API, etc.) |
 | `severity_hint` | As emitted by source (do not “fix” it in the CSV) |
 | `broad_category` | **Evaluation-only** label (see enum below) |
+| `why_this_category` | Short human rationale for the chosen `broad_category` (evaluation / review). |
+| `would_match_family` | `yes` / `no` / `maybe` — whether the row would match a **pattern family** (not the same as final triage label or mapping readiness). |
+
+These two columns separate **family match**, **triage posture**, and **mapping readiness** before you encode rules in JSON.
 
 ### `broad_category` enum (v1)
 
@@ -57,7 +62,19 @@ Use **only** these five values:
 
 This mix surfaces schema friction early and stresses the **last two categories**, which decide whether the system is **safely honest**.
 
-The repo ships an initial **`data/sample_issues.csv`** with this 8-row mix as a **starting point**; replace or extend with your real alerts, then freeze v1.
+The repo ships **`data/sample_issues.csv`** as a **v1 candidate (12 rows)**; replace with your real alerts before calling it the agreed sample set.
+
+### v1 candidate: 12-row target distribution
+
+| Category | Count |
+| -------- | ----- |
+| `known_recurring` | 3 |
+| `likely_new` | 2 |
+| `review_needed` | 3 |
+| `missing_mapping` | 2 |
+| `safety_challenge` | 2 |
+
+Include **2–3 non-prod** environments (`uat`, `test`, or `stage`) where possible. Rationale and gap analysis: [`docs/sample-issues-review-v0.1.md`](sample-issues-review-v0.1.md).
 
 ---
 
@@ -139,6 +156,21 @@ If that is clear, the JSON artifacts **follow naturally**.
 
 ---
 
+## Review sheet (manual baseline / MVP-assisted)
+
+Use [`data/sample_issues_review_sheet.csv`](../data/sample_issues_review_sheet.csv) each time you run a **manual baseline** or **MVP-assisted** pass on the agreed sample:
+
+| Column | Values / notes |
+| ------ | -------------- |
+| `issue_id` | Matches `sample_issues.csv` |
+| `expected_triage_label` | `likely_recurring` \| `likely_new` \| `review_needed` (MVP triage contract) |
+| `reviewer_agrees_with_broad_category` | `yes` \| `no` |
+| `reviewer_notes` | Freeform comparison notes |
+
+Keep **`broad_category`** and **`why_this_category` / `would_match_family`** on `sample_issues.csv`; use the review sheet for **per-round** human agreement and notes.
+
+---
+
 ## Version
 
-v1.0
+v1.1

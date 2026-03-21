@@ -135,24 +135,26 @@ Each record in the evaluation sample set should include, at minimum:
 - module_or_domain
 - severity_hint
 - **broad_category** (evaluation / review only; use the five allowed values in [`docs/sample-issues-workflow.md`](sample-issues-workflow.md): `known_recurring`, `likely_new`, `review_needed`, `missing_mapping`, `safety_challenge`)
+- **why_this_category** (short rationale for the chosen `broad_category`)
+- **would_match_family** (`yes` / `no` / `maybe` — expected pattern-family match, not final triage)
 
 `broad_category` may stay out of the core runtime schema if you prefer, but it is valuable **now** for cross-checking agreed-sample coverage and acceptance.
 
 Optional fields may be included if useful for manual review, but the fixed evaluation set should not depend on hidden metadata that the MVP pipeline does not receive.
 
 ## Ground truth review sheet
-For evaluation, reviewers should maintain a simple review sheet with at least:
-- issue_id
-- expected broad category
-  - known recurring
-  - likely new
-  - ambiguous / review-needed
-  - missing-mapping
-  - safety challenge
-- expected concern
-- manual triage notes
-- manual email placement
-- reviewer comments on system usefulness
+For **manual baseline** and **MVP-assisted** runs, use a minimal per-round sheet so comparisons are recorded in one place.
+
+**Canonical template:** [`data/sample_issues_review_sheet.csv`](../data/sample_issues_review_sheet.csv)
+
+| Column | Purpose |
+| ------ | ------- |
+| `issue_id` | Join to `data/sample_issues.csv` |
+| `expected_triage_label` | Expected MVP triage output: `likely_recurring`, `likely_new`, or `review_needed` |
+| `reviewer_agrees_with_broad_category` | `yes` or `no` — whether the frozen row’s `broad_category` still holds for this round |
+| `reviewer_notes` | Concerns, email placement, effort, deltas vs system output |
+
+The sample issues CSV still holds **`broad_category`** (evaluation mix) and **`why_this_category` / `would_match_family`**; the review sheet is where **round-by-round agreement and notes** live.
 
 The purpose of this sheet is not to force pixel-perfect accuracy.
 It is to support structured comparison between manual handling and MVP-assisted handling.
@@ -228,4 +230,4 @@ To move from methodology to runnable, testable validation, freeze each round usi
 **After the CSV exists:** decide which recurring families deserve extraction into `known_patterns.json`, which rows should **deliberately remain unmatched** by v1 patterns, and which groups are stable enough to justify entries in `kb_ticket_mapping.json`. The CSV tells you what the JSON shapes must support; the reverse is not true.
 
 ## Version
-v1.3
+v1.5
