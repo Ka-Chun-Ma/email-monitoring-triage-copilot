@@ -1,0 +1,134 @@
+{
+    "version": "0.1",
+    "notes": [
+      "Deterministic-first family matching for MVP v1 candidate sample set.",
+      "This file is intentionally conservative.",
+      "Pattern match does not automatically imply safe recurring classification.",
+      "Triage label must still consider context, environment, object specificity, and safety posture."
+    ],
+    "triage_policy_notes": [
+      "Use exact or near-exact recurring routing only where wording, object class, and operational meaning are stable.",
+      "If match confidence is partial, context is incomplete, or semantics may differ, route to review_needed.",
+      "Do not treat family match as mapping readiness.",
+      "Do not use this file to guess KB, ticket, or owner references."
+    ],
+    "patterns": [
+      {
+        "pattern_id": "PAT-001-DUPLICATE-KEY-FAMILY",
+        "issue_family": "duplicate_key_violation",
+        "family_description": "Duplicate key violation wording family across BW load and staging contexts.",
+        "match_intent": "family_match_only",
+        "recommended_default_triage": "review_needed",
+        "recommended_confidence": "medium",
+        "rationale": "Sample set shows this family includes safe recurring-looking cases, context-poor cases, and semantic-drift replay cases. Match family, but do not assume benign recurring handling.",
+        "source_systems": ["BW_LOAD"],
+        "module_or_domain_candidates": ["BW DTP load", "BW staging"],
+        "match_rules": {
+          "all_of": [
+            "duplicate key violation"
+          ],
+          "any_of": [
+            "business key",
+            "target",
+            "staging",
+            "reported"
+          ],
+          "exclude_if_contains_any": []
+        },
+        "escalate_to_review_if_contains_any": [
+          "full sql",
+          "source row context not provided",
+          "replay",
+          "reinserted same logical row",
+          "differs from fact-table duplicate handling"
+        ],
+        "safe_recurring_constraints": [
+          "Do not auto-classify as likely_recurring in v0.1.",
+          "Treat all matches as review_needed unless a later rule layer explicitly narrows to a safe recurring subfamily."
+        ],
+        "example_issue_ids": [
+          "ISS-EVAL-001",
+          "ISS-EVAL-006",
+          "ISS-EVAL-008",
+          "ISS-EVAL-011"
+        ]
+      },
+      {
+        "pattern_id": "PAT-002-TIMEOUT-THRESHOLD-FAMILY",
+        "issue_family": "timeout_threshold_exceeded",
+        "family_description": "Watchdog timeout threshold exceeded on orchestrated jobs.",
+        "match_intent": "family_match_with_limited_recurring_support",
+        "recommended_default_triage": "likely_recurring",
+        "recommended_confidence": "high",
+        "rationale": "This family has one strong recurring canonical case and one missing-mapping case, but also includes new-job and diverged-cause cases. Canonical recurring should be allowed only under narrow constraints.",
+        "source_systems": ["ORCH_SCHED"],
+        "module_or_domain_candidates": ["Orchestrator"],
+        "match_rules": {
+          "all_of": [
+            "exceeded timeout threshold",
+            "terminated by watchdog"
+          ],
+          "any_of": [
+            "job id"
+          ],
+          "exclude_if_contains_any": []
+        },
+        "escalate_to_review_if_contains_any": [
+          "first production run",
+          "no prior baseline",
+          "storage latency",
+          "root cause not isolated",
+          "intermittent"
+        ],
+        "safe_recurring_constraints": [
+          "Allow likely_recurring only when wording is canonical and no escalate phrase is present.",
+          "If job family is first observed, baseline is absent, or cause chain diverges, do not treat as safe recurring.",
+          "If mapping for the matched object/job is absent, triage may still match family, but mapping readiness must remain false."
+        ],
+        "example_issue_ids": [
+          "ISS-EVAL-002",
+          "ISS-EVAL-004",
+          "ISS-EVAL-007",
+          "ISS-EVAL-010"
+        ]
+      },
+      {
+        "pattern_id": "PAT-003-REFERENCE-FILE-MISSING-FAMILY",
+        "issue_family": "reference_file_missing",
+        "family_description": "Reference file missing at expected path during file intake.",
+        "match_intent": "family_match_with_limited_recurring_support",
+        "recommended_default_triage": "likely_recurring",
+        "recommended_confidence": "high",
+        "rationale": "This family has a stable canonical recurring case, but also includes conflicting-signal and permission/ACL ambiguity cases. File-missing surface form alone is not enough for safe recurring routing.",
+        "source_systems": ["FILE_INTAKE"],
+        "module_or_domain_candidates": ["SFTP intake"],
+        "match_rules": {
+          "all_of": [
+            "reference file missing at expected path"
+          ],
+          "any_of": [
+            "/inbound/"
+          ],
+          "exclude_if_contains_any": []
+        },
+        "escalate_to_review_if_contains_any": [
+          "vendor portal shows upload completed",
+          "possible av scan",
+          "delayed handoff",
+          "permission denied",
+          "acl regression",
+          "do not apply prod file-missing playbook"
+        ],
+        "safe_recurring_constraints": [
+          "Allow likely_recurring only when wording is canonical and no conflicting-signal phrase is present.",
+          "Do not auto-classify as likely_recurring when evidence suggests completed upload, access-control issues, or environment-specific cutover ambiguity.",
+          "Environment alone is not sufficient for escalation, but non-prod mixed-signal cases should remain reviewable."
+        ],
+        "example_issue_ids": [
+          "ISS-EVAL-003",
+          "ISS-EVAL-009",
+          "ISS-EVAL-012"
+        ]
+      }
+    ]
+  }

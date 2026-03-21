@@ -169,8 +169,10 @@ Use [`data/sample_issues_review_sheet.csv`](../data/sample_issues_review_sheet.c
 
 Keep **`broad_category`** and **`why_this_category` / `would_match_family`** on `sample_issues.csv`; use the review sheet for **per-round** human agreement and notes.
 
+After `known_patterns.json` and `kb_ticket_mapping.json` v0.1 exist, validate the split with [`docs/pipeline-v0.1.md`](pipeline-v0.1.md) and `python src/run_pipeline.py`.
+
 ---
 
 ## Version
 
-v1.1
+v1.2

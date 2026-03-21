@@ -12,6 +12,7 @@ Deterministic-first, human-in-the-loop workflow to reduce triage and daily monit
 | [docs/sample-issues-review-v0.1.md](docs/sample-issues-review-v0.1.md) | Pilot v0.1 review notes, 12-row v1 candidate, patterns/mapping conservatism |
 | [docs/mvp-boundary.md](docs/mvp-boundary.md) | In-scope / out-of-scope for MVP |
 | [docs/failure-modes.md](docs/failure-modes.md) | Acceptable vs unacceptable failures |
+| [docs/pipeline-v0.1.md](docs/pipeline-v0.1.md) | Minimal pipeline: family match → triage → grounded mapping |
 
 ## Setup (local)
 
@@ -20,6 +21,16 @@ python -m venv .venv
 .\.venv\Scripts\Activate.ps1
 pip install -r requirements.txt
 ```
+
+## Run pipeline v0.1
+
+Deterministic family match, triage candidate, and mapping layer (no email draft):
+
+```powershell
+python src/run_pipeline.py
+```
+
+See [docs/pipeline-v0.1.md](docs/pipeline-v0.1.md).
 
 ## Publish to GitHub
 

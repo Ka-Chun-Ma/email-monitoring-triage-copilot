@@ -16,8 +16,10 @@ See [`docs/evaluation-sample-set.md`](../docs/evaluation-sample-set.md) (CSV-fir
 | ---- | ---- |
 | `sample_issues.csv` | **v1 candidate (12 rows):** distribution 3 / 2 / 3 / 2 / 2; includes `why_this_category` and `would_match_family` (`yes` / `no` / `maybe`) per row. See [`docs/sample-issues-workflow.md`](../docs/sample-issues-workflow.md). |
 | `sample_issues_review_sheet.csv` | **Manual baseline / MVP-assisted review:** `expected_triage_label` (`likely_recurring` \| `likely_new` \| `review_needed`), `reviewer_agrees_with_broad_category` (`yes` \| `no`), `reviewer_notes`. Filled per validation round; not a substitute for `broad_category` / `why_this_category` on `sample_issues.csv`. |
-| `known_patterns.json` | Deterministic patterns matched against normalized text. |
-| `kb_ticket_mapping.json` | Grounded KB / ticket / owner mappings (no fabricated references). |
+| `known_patterns.json` | v0.1 — conservative pattern families; match ≠ safe recurring (see `triage_policy_notes`). |
+| `kb_ticket_mapping.json` | v0.1 — grounded hints only where stable; `do_not_apply_if_contains_any` + `intentional_missing_mappings`. |
+
+**Runnable slice:** `python src/run_pipeline.py` reads the CSV and both JSON files (see [docs/pipeline-v0.1.md](../docs/pipeline-v0.1.md)).
 
 ## Intentional coverage (five spines)
 

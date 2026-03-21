@@ -1,0 +1,103 @@
+{
+    "version": "0.1",
+    "notes": [
+      "Grounded mapping candidates for MVP v1 candidate sample set.",
+      "This file is intentionally conservative.",
+      "Only families with relatively stable operational meaning are mapped in v0.1.",
+      "Absence of mapping is a valid and intentional state.",
+      "This file must not be used to fabricate references for unmatched or weakly matched cases."
+    ],
+    "mapping_policy_notes": [
+      "Pattern family match does not automatically imply mapping readiness.",
+      "If no grounded mapping exists for the matched family and object class, emit missing_mapping rather than a guessed reference.",
+      "Owner hints are suggestions only and do not replace human assignment.",
+      "Mappings may exist at family level first and later evolve into object-level mappings."
+    ],
+    "mappings": [
+      {
+        "mapping_id": "MAP-001-TIMEOUT-ORCH-GENERIC",
+        "issue_family": "timeout_threshold_exceeded",
+        "mapping_scope": "family_level",
+        "applies_when": {
+          "source_system_in": ["ORCH_SCHED"],
+          "module_or_domain_in": ["Orchestrator"]
+        },
+        "related_kb_id": "KB-ORCH-001",
+        "related_kb_title": "Investigating watchdog timeouts in orchestrated nightly jobs",
+        "related_ticket_id": "RUNBOOK-ORCH-TIMEOUT",
+        "owner_hint": "Data Operations / Orchestration owner",
+        "mapping_confidence": "high",
+        "follow_up_hint": "Check whether the job is a known recurring workload, confirm run duration trend, and review recent dependency latency before escalating.",
+        "reviewer_note_template": "Confirm whether the timeout matches a known recurring pattern or whether the job family or cause chain has changed.",
+        "do_not_apply_if_contains_any": [
+          "first production run",
+          "no prior baseline",
+          "storage latency",
+          "root cause not isolated",
+          "intermittent"
+        ],
+        "example_issue_ids": [
+          "ISS-EVAL-002"
+        ]
+      },
+      {
+        "mapping_id": "MAP-002-REFERENCE-FILE-MISSING-GENERIC",
+        "issue_family": "reference_file_missing",
+        "mapping_scope": "family_level",
+        "applies_when": {
+          "source_system_in": ["FILE_INTAKE"],
+          "module_or_domain_in": ["SFTP intake"]
+        },
+        "related_kb_id": "KB-FILE-001",
+        "related_kb_title": "Reference file missing at expected path during intake",
+        "related_ticket_id": "RUNBOOK-FILE-MISSING",
+        "owner_hint": "Data Intake / File Delivery owner",
+        "mapping_confidence": "high",
+        "follow_up_hint": "Validate whether the expected file path is correct, confirm supplier handoff status, and check whether the file is missing versus inaccessible.",
+        "reviewer_note_template": "Confirm whether this is a genuine file-missing event or an access, handoff, or environment-specific issue.",
+        "do_not_apply_if_contains_any": [
+          "vendor portal shows upload completed",
+          "possible av scan",
+          "delayed handoff",
+          "permission denied",
+          "acl regression",
+          "do not apply prod file-missing playbook"
+        ],
+        "example_issue_ids": [
+          "ISS-EVAL-003"
+        ]
+      }
+    ],
+    "intentional_missing_mappings": [
+      {
+        "issue_family": "duplicate_key_violation",
+        "reason": "Family currently spans stable recurring-looking, context-poor, staging-specific, and replay semantic-drift cases. Mapping is intentionally deferred until subfamilies are separated.",
+        "recommended_behavior": "Allow family match, but keep mapping readiness false and route to review_needed unless a later subfamily rule becomes stable enough for grounded mapping.",
+        "example_issue_ids": [
+          "ISS-EVAL-001",
+          "ISS-EVAL-006",
+          "ISS-EVAL-008",
+          "ISS-EVAL-011"
+        ]
+      },
+      {
+        "issue_family": "timeout_threshold_exceeded",
+        "reason": "Not every timeout-family match is safely mappable. New-job, no-baseline, or diverged-cause cases should remain reviewable even if the family matches.",
+        "recommended_behavior": "Use mapping only for canonical orchestrator timeout wording without escalation phrases. Otherwise emit missing_mapping or review_needed.",
+        "example_issue_ids": [
+          "ISS-EVAL-004",
+          "ISS-EVAL-007",
+          "ISS-EVAL-010"
+        ]
+      },
+      {
+        "issue_family": "reference_file_missing",
+        "reason": "Not every file-missing surface form is a true missing-file event. Access-control, delayed handoff, or environment-specific ambiguity should not inherit a confident mapping.",
+        "recommended_behavior": "Use mapping only for canonical missing-at-path wording without conflicting-signal phrases. Otherwise emit missing_mapping or review_needed.",
+        "example_issue_ids": [
+          "ISS-EVAL-009",
+          "ISS-EVAL-012"
+        ]
+      }
+    ]
+  }
