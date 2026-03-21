@@ -119,3 +119,5 @@ If needed, you can further use the `web_scraper.py` file to scrape the web page 
 [X] Task: Git init + GitHub publish prep (repo name = folder name)
 [X] Step 1: Add `.gitignore`, `README.md`, `docs/github-setup.md`
 [X] Step 2: `git init`, commit on `main` (user pushes after creating empty GitHub repo)
+[ ] Task: Push docs v1.2 + evaluation-sample-set + data README to GitHub
+[ ] Step 1: Commit and `git push origin main`
