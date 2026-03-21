@@ -98,6 +98,7 @@ If needed, you can further use the `web_scraper.py` file to scrape the web page 
 - Read the file before you try to edit it.
 - Due to Cursor's limit, when you use `git` and `gh` and need to submit a multiline commit message, first write the message in a file, and then use `git commit -F <filename>` or similar command to commit. And then remove the file. Include "[Cursor] " in the commit message and PR title.
 - Use English for generated file content to keep repository content GitHub-ready.
+- For GitHub uploads, keep `.venv/`, `venv/`, and `.env` out of git via `.gitignore`; initialize repo locally and push after creating an empty remote repo with the same name as the project folder.
 
 ## Cursor learned
 
@@ -115,3 +116,6 @@ If needed, you can further use the `web_scraper.py` file to scrape the web page 
 [X] Task: Review docs for success completeness
 [X] Step 1: Read `docs/success-definition.md`, `docs/mvp-boundary.md`, `docs/failure-modes.md`
 [X] Step 2: Add measurable Definition of Done and exit checklist
+[X] Task: Git init + GitHub publish prep (repo name = folder name)
+[X] Step 1: Add `.gitignore`, `README.md`, `docs/github-setup.md`
+[X] Step 2: `git init`, commit on `main` (user pushes after creating empty GitHub repo)
