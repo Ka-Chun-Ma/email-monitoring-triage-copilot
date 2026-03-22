@@ -116,20 +116,25 @@ For each row, you should be able to state **stably** (out loud or in one line of
 
 If you cannot separate these four comfortably, **do not** change `known_patterns.json` yet. The bottleneck is still judgment, not syntax.
 
-Then fill or adjust the working table below.
+**One-line purpose (what this pass is really for):**  
+It is **not** “get the labels right.” It is to confirm **which rows in the duplicate family are only surface-similar** and **which actually share the same kind of safely handleable operational meaning**—before any rule or mapping change.
+
+Then use the filled table below as the round 2 starting point.
 
 ---
 
-## Working review table
+## Working review table (initial labels — round 2 entry point)
 
-Use the following table to inspect current duplicate-family rows.
+Filled for **ISS-EVAL-001**, **006**, **008**, **011** only. Adjust later if the frozen sample or ops context changes.
 
-| issue_id | current broad_category | would_match_family | proposed subfamily | why this subfamily | current safe posture | notes |
-|---|---|---|---|---|---|---|
-| ISS-EVAL-001 | known_recurring | yes | canonical_duplicate | Stable duplicate wording in normal load context; no replay or missing-context language visible | candidate for narrower recurring later | Good anchor row for canonical subfamily |
-| ISS-EVAL-006 | review_needed | yes or maybe | context_poor_duplicate | Duplicate wording present, but alert explicitly says full SQL and source row context not provided | review_needed | Strong example of familiar wording but unsafe confidence |
-| ISS-EVAL-008 | safety_challenge | yes | replay_semantic_drift_duplicate | Replay / reinsert language changes operational meaning even though duplicate wording is familiar | review_needed | Strong semantic-drift case |
-| ISS-EVAL-011 | missing_mapping | yes | context_poor_or_mapping_uncertain_duplicate | Duplicate family likely matches, but mapping readiness is not established yet | review_needed | Keep separate from canonical recurring until evidence improves |
+| issue_id | proposed subfamily | why this subfamily | current safe posture | notes |
+| -------- | -------------------- | ------------------- | -------------------- | ----- |
+| ISS-EVAL-001 | `canonical_duplicate` | Standard duplicate-key wording in a normal load context. Business key and target are present. No replay indicators or missing-context warnings are visible. | **candidate for narrower recurring later** (not automatic mapping-ready) | Cleanest anchor row for a canonical duplicate subfamily; stability of meaning still does not imply grounded mapping by itself. |
+| ISS-EVAL-006 | `context_poor_duplicate` | Duplicate-key wording is present, but the alert explicitly says that full SQL and source row context are not provided. Surface family is familiar, but evidence is too thin for safe recurring handling. | **`review_needed`** | Strong example of familiar wording without enough context; protects against false comfort. |
+| ISS-EVAL-008 | `replay_semantic_drift_duplicate` | Duplicate-key wording is present, but replay / reinsert language changes the operational meaning. The message explicitly says it differs from normal fact-table duplicate handling. | **`review_needed`** | Strong semantic-drift trap; must stay clearly protected even if canonical duplicate handling is narrowed later. |
+| ISS-EVAL-011 | `mapping_uncertain_duplicate` | Duplicate-family match is plausible, but the main unresolved issue is not only family recognition—grounded mapping readiness is still not established. This row should not be used as evidence that duplicate handling is stable enough for confident mapping. | **`review_needed`** | Keep separate from canonical for now; may later merge into a context-poor branch only if evidence strengthens—**or** stay as mapping-uncertain. Alternative working label: `context_poor_or_mapping_uncertain` if you prefer one bucket until you split further. |
+
+**Source CSV columns (for traceability):** `ISS-EVAL-001` — `known_recurring`; `006` — `review_needed`; `008` — `safety_challenge`; `011` — `missing_mapping`. `would_match_family` on the sample CSV remains the evaluation scaffold from v1.
 
 ---
 
@@ -233,9 +238,9 @@ The correct next move is more careful sample thinking.
 
 Use this section to record unresolved judgment questions.
 
-- Does ISS-EVAL-011 belong with context-poor duplicate, or does it need a separate mapping-uncertain duplicate treatment?
-- Is ISS-EVAL-001 strong enough to justify a narrower recurring path, or does it still need another canonical example before refinement?
-- Are there any duplicate-related cases missing from the sample set that would materially change the subfamily design?
+- **ISS-EVAL-011:** Working label is **`mapping_uncertain_duplicate`** (vs `context_poor_or_mapping_uncertain`). Revisit after round 2 pattern experiments: merge vs keep separate?
+- **ISS-EVAL-001:** Is one canonical row enough to justify a narrower recurring path in code, or do you want another canonical example before changing `run_pipeline.py`?
+- Are any duplicate-related cases **missing** from the frozen sample that would change subfamily boundaries?
 
 ---
 
@@ -250,4 +255,4 @@ It should only be refined if:
 That is the standard for round 2.
 
 ## Version
-v0.1 (editorial: human pass before code; emphasis on operational meaning)
+v0.1.1 (four-row initial subfamily labels filled for round 2 entry)
