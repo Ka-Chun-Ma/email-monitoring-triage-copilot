@@ -4,6 +4,8 @@
 
 **Operational steps and `broad_category` enum:** [`docs/sample-issues-workflow.md`](sample-issues-workflow.md).
 
+**First empirical evaluation pass (manual baseline vs pipeline):** [`docs/evaluation-pass-v0.1.md`](evaluation-pass-v0.1.md).
+
 ## Purpose
 This document defines the fixed evaluation sample set used to assess whether the MVP is complete.
 
@@ -230,4 +232,4 @@ To move from methodology to runnable, testable validation, freeze each round usi
 **After the CSV exists:** decide which recurring families deserve extraction into `known_patterns.json`, which rows should **deliberately remain unmatched** by v1 patterns, and which groups are stable enough to justify entries in `kb_ticket_mapping.json`. The CSV tells you what the JSON shapes must support; the reverse is not true.
 
 ## Version
-v1.5
+v1.6

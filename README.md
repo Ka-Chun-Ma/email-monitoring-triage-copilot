@@ -13,6 +13,7 @@ Deterministic-first, human-in-the-loop workflow to reduce triage and daily monit
 | [docs/mvp-boundary.md](docs/mvp-boundary.md) | In-scope / out-of-scope for MVP |
 | [docs/failure-modes.md](docs/failure-modes.md) | Acceptable vs unacceptable failures |
 | [docs/pipeline-v0.1.md](docs/pipeline-v0.1.md) | Minimal pipeline: family match → triage → grounded mapping |
+| [docs/evaluation-pass-v0.1.md](docs/evaluation-pass-v0.1.md) | First empirical pass: manual baseline vs pipeline + review sheet; bottleneck question |
 
 ## Setup (local)
 
