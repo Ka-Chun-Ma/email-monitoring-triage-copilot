@@ -1,0 +1,13 @@
+issue_id,expected_triage_label,reviewer_agrees_with_broad_category,reviewer_notes
+ISS-EVAL-001,likely_recurring,yes,"Canonical prod duplicate on ZSALES01; safe first-pass posture is recurring (not final root cause)."
+ISS-EVAL-002,likely_recurring,yes,"Stable nightly timeout family."
+ISS-EVAL-003,likely_recurring,yes,"Clean missing-file path; straightforward intake check."
+ISS-EVAL-004,review_needed,yes,"Timeout wording but new job family; do not treat as same recurring posture as 002."
+ISS-EVAL-005,likely_new,yes,"No stable pattern yet."
+ISS-EVAL-006,review_needed,yes,"Duplicate surface without enough context."
+ISS-EVAL-007,likely_recurring,partly,"Timeout family is familiar; broad_category flags mapping gap—separate from triage label."
+ISS-EVAL-008,review_needed,yes,"Replay semantics; not benign duplicate."
+ISS-EVAL-009,review_needed,yes,"Conflicting signals in UAT; not simple missing file."
+ISS-EVAL-010,review_needed,yes,"Same job id as 002 but diverged cause/severity."
+ISS-EVAL-011,review_needed,partly,"Duplicate family; staging object—mapping not established in sample design."
+ISS-EVAL-012,review_needed,yes,"Permission/ACL ambiguity; not canonical missing file."
