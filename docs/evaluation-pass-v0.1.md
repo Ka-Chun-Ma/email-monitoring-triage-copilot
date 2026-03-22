@@ -356,6 +356,16 @@ Next step: tighten safety guardrails before adding more automation.
 
 ---
 
+## Example filled artifacts (round 1)
+
+Simulated pass (for structure only — replace with a human reviewer’s run):
+
+- [`data/sample_issues_review_sheet_manual_baseline.csv`](../data/sample_issues_review_sheet_manual_baseline.csv)
+- [`data/sample_issues_review_sheet_mvp_assisted.csv`](../data/sample_issues_review_sheet_mvp_assisted.csv)
+- [`evaluator-summary-v0.1-round1.md`](evaluator-summary-v0.1-round1.md) (from [`evaluator-summary-template-v0.1.md`](evaluator-summary-template-v0.1.md))
+
+---
+
 ## Decision log for v0.1 pass
 
 Fill in after the evaluation pass:

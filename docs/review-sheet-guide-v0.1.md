@@ -280,5 +280,11 @@ A filled review sheet is useful if:
 
 ---
 
+## After both stages: evaluator summary
+
+Consolidate findings using [`evaluator-summary-template-v0.1.md`](evaluator-summary-template-v0.1.md). A filled example (simulated round 1) is in [`evaluator-summary-v0.1-round1.md`](evaluator-summary-v0.1-round1.md).
+
+---
+
 ## Version
 v0.1

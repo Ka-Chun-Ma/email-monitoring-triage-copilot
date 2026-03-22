@@ -15,7 +15,8 @@ Deterministic-first, human-in-the-loop workflow to reduce triage and daily monit
 | [docs/pipeline-v0.1.md](docs/pipeline-v0.1.md) | Minimal pipeline: family match → triage → grounded mapping |
 | [docs/evaluation-pass-v0.1.md](docs/evaluation-pass-v0.1.md) | First hands-on evaluation: manual baseline vs MVP-assisted, bottleneck question |
 | [docs/review-sheet-guide-v0.1.md](docs/review-sheet-guide-v0.1.md) | How to fill `sample_issues_review_sheet.csv` (comparable, short notes) |
-| [docs/evaluation-result-v0.1-synthetic.md](docs/evaluation-result-v0.1-synthetic.md) | Example manual vs MVP-assisted comparison + bottleneck answer (synthetic) |
+| [docs/evaluator-summary-template-v0.1.md](docs/evaluator-summary-template-v0.1.md) | Blank template for post-pass evaluator summary |
+| [docs/evaluator-summary-v0.1-round1.md](docs/evaluator-summary-v0.1-round1.md) | Example filled summary (round 1, simulated) |
 
 ## Setup (local)
 

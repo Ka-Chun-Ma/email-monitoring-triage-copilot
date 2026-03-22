@@ -15,9 +15,11 @@ See [`docs/evaluation-sample-set.md`](../docs/evaluation-sample-set.md) (CSV-fir
 | File | Role |
 | ---- | ---- |
 | `sample_issues.csv` | **v1 candidate (12 rows):** distribution 3 / 2 / 3 / 2 / 2; includes `why_this_category` and `would_match_family` (`yes` / `no` / `maybe`) per row. See [`docs/sample-issues-workflow.md`](../docs/sample-issues-workflow.md). |
-| `sample_issues_review_sheet.csv` | Empty template. **Manual baseline / MVP-assisted:** `expected_triage_label`, `reviewer_agrees_with_broad_category` (`yes` \| `no` \| `partly`), `reviewer_notes`. How to fill: [`docs/review-sheet-guide-v0.1.md`](../docs/review-sheet-guide-v0.1.md). Full pass: [`docs/evaluation-pass-v0.1.md`](../docs/evaluation-pass-v0.1.md). |
-| `sample_issues_review_sheet_manual_baseline.csv` | Example **Stage A** fill (synthetic). |
-| `sample_issues_review_sheet_mvp_assisted.csv` | Example **Stage B** fill (synthetic). See [`docs/evaluation-result-v0.1-synthetic.md`](../docs/evaluation-result-v0.1-synthetic.md). |
+| `sample_issues_review_sheet.csv` | Empty template; copy or fill per round. |
+| `sample_issues_review_sheet_manual_baseline.csv` | Example **Stage A** fill (simulated round 1). |
+| `sample_issues_review_sheet_mvp_assisted.csv` | Example **Stage B** fill (simulated round 1). |
+| Review sheet how-to | [`docs/review-sheet-guide-v0.1.md`](../docs/review-sheet-guide-v0.1.md). Full pass: [`docs/evaluation-pass-v0.1.md`](../docs/evaluation-pass-v0.1.md). |
+| Evaluator summary | Template: [`docs/evaluator-summary-template-v0.1.md`](../docs/evaluator-summary-template-v0.1.md). Filled example: [`docs/evaluator-summary-v0.1-round1.md`](../docs/evaluator-summary-v0.1-round1.md). |
 | `known_patterns.json` | v0.1 — conservative pattern families; match ≠ safe recurring (see `triage_policy_notes`). |
 | `kb_ticket_mapping.json` | v0.1 — grounded hints only where stable; `do_not_apply_if_contains_any` + `intentional_missing_mappings`. |
 
