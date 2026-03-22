@@ -17,6 +17,8 @@ Deterministic-first, human-in-the-loop workflow to reduce triage and daily monit
 | [docs/review-sheet-guide-v0.1.md](docs/review-sheet-guide-v0.1.md) | How to fill `sample_issues_review_sheet.csv` (comparable, short notes) |
 | [docs/evaluator-summary-template-v0.1.md](docs/evaluator-summary-template-v0.1.md) | Blank template for post-pass evaluator summary |
 | [docs/evaluator-summary-v0.1-round1.md](docs/evaluator-summary-v0.1-round1.md) | Example filled summary (round 1, simulated) |
+| [docs/round-2-plan-v0.1.md](docs/round-2-plan-v0.1.md) | Round 2: refine duplicate judgment boundary (not scope expansion) |
+| [docs/duplicate-subfamily-working-note-v0.1.md](docs/duplicate-subfamily-working-note-v0.1.md) | Human pass before code: canonical / context-poor / replay / mapping uncertainty |
 
 ## Setup (local)
 

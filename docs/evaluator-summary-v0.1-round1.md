@@ -92,7 +92,7 @@ Filled using [`evaluator-summary-template-v0.1.md`](evaluator-summary-template-v
 ### Mapping usefulness observations
 - **Hints mattered** where applied (**002, 003**).
 - **Missing mappings** surfaced **honestly** when guards or intentional lists blocked application.
-- **Next bottleneck (this pass):** **both** — **triage conservatism on duplicate family** (001 vs policy) and **mapping sparsity** (007, duplicate family overall). Primary fork: **refine duplicate subfamilies / triage rules** *or* **expand mapping only after subfamilies are stable**.
+- **Next bottleneck (this pass):** **both** — **triage conservatism on duplicate family** (001 vs policy) and **mapping sparsity** (007, duplicate family overall). Primary fork: **refine duplicate subfamilies / triage rules** *or* **expand mapping only after subfamilies are stable**. At least one clearly canonical duplicate row can move from blanket review_needed toward a safer, narrower recurring posture without weakening replay or context-poor rows
 
 ---
 
@@ -130,7 +130,7 @@ Filled using [`evaluator-summary-template-v0.1.md`](evaluator-summary-template-v
 ## 7. Recommended next step
 
 ### Recommended next step:
-- **refine subfamilies** (duplicate_key_violation first: e.g. fact-table canonical vs replay vs staging-context-poor), *then* reassess mapping — **expand grounded mappings selectively** only for subfamilies that stay stable across the sample.
+- **refine subfamilies** (duplicate_key_violation first: e.g. fact-table canonical vs replay vs staging-context-poor), *then* reassess mapping — **expand grounded mappings selectively** only for subfamilies that stay stable across the sample. Operational plan: [`round-2-plan-v0.1.md`](round-2-plan-v0.1.md), human working note: [`duplicate-subfamily-working-note-v0.1.md`](duplicate-subfamily-working-note-v0.1.md).
 
 ### Why this is the highest-leverage next step:
 - **Mapping expansion** without **subfamily separation** risks looking “complete” while **duplicate** remains the riskiest family in the set.
@@ -140,7 +140,8 @@ Filled using [`evaluator-summary-template-v0.1.md`](evaluator-summary-template-v
 ## 8. Pass judgment for v0.1
 
 ### Is this evaluation pass encouraging?
-- **partly**
+- **encouraging on structure and safety**
+- **not yet strong enough on triage efficiency for duplicate family**
 
 ### Why?
 - **Pipeline proves separation of concerns** and **honest missing mapping**; **duplicate policy** needs iteration to recover **operational recurring** rows without weakening safety rows.
