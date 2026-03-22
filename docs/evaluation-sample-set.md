@@ -4,8 +4,6 @@
 
 **Operational steps and `broad_category` enum:** [`docs/sample-issues-workflow.md`](sample-issues-workflow.md).
 
-**First empirical evaluation pass (manual baseline vs pipeline):** [`docs/evaluation-pass-v0.1.md`](evaluation-pass-v0.1.md).
-
 ## Purpose
 This document defines the fixed evaluation sample set used to assess whether the MVP is complete.
 
@@ -147,13 +145,13 @@ Optional fields may be included if useful for manual review, but the fixed evalu
 ## Ground truth review sheet
 For **manual baseline** and **MVP-assisted** runs, use a minimal per-round sheet so comparisons are recorded in one place.
 
-**Canonical template:** [`data/sample_issues_review_sheet.csv`](../data/sample_issues_review_sheet.csv)
+**Canonical template:** [`data/sample_issues_review_sheet.csv`](../data/sample_issues_review_sheet.csv) — how to fill: [`review-sheet-guide-v0.1.md`](review-sheet-guide-v0.1.md). First full pass workflow: [`evaluation-pass-v0.1.md`](evaluation-pass-v0.1.md).
 
 | Column | Purpose |
 | ------ | ------- |
 | `issue_id` | Join to `data/sample_issues.csv` |
 | `expected_triage_label` | Expected MVP triage output: `likely_recurring`, `likely_new`, or `review_needed` |
-| `reviewer_agrees_with_broad_category` | `yes` or `no` — whether the frozen row’s `broad_category` still holds for this round |
+| `reviewer_agrees_with_broad_category` | `yes` \| `no` \| `partly` — whether the frozen row’s `broad_category` still holds for this round |
 | `reviewer_notes` | Concerns, email placement, effort, deltas vs system output |
 
 The sample issues CSV still holds **`broad_category`** (evaluation mix) and **`why_this_category` / `would_match_family`**; the review sheet is where **round-by-round agreement and notes** live.

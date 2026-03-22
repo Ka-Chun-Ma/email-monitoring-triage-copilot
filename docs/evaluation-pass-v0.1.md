@@ -1,5 +1,52 @@
 # Evaluation Pass v0.1
 
+## What this document is (and is not)
+
+This is **not** another abstract methodology note. It connects the governance + artifact stack to **the first hands-on evaluation round**: same frozen sample, two passes (manual then MVP-assisted), comparable records.
+
+It is meant to help you avoid two common mistakes:
+
+| Mistake | Why it misleads |
+| -------- | ---------------- |
+| **“The pipeline runs, so the MVP must be valuable.”** | Runnable code proves wiring, not usefulness, safety posture, or reviewer effort reduction. |
+| **“`review_needed` is high, so the system is useless.”** | High review routing can be appropriate conservatism. The question is whether the reviewer still reaches **safe first-pass triage faster**, with **clearer structure** and **honest uncertainty**—not raw label counts. |
+
+**What to look at instead:**
+
+- Whether the reviewer **enters safe first-pass triage faster** than pure manual handling  
+- Whether **structure is easier to reuse** (grouping, families, packaging mental model)  
+- Whether **uncertainty is surfaced honestly** (no false comfort from family match)  
+- **Which layer deserves the next optimization** (patterns / triage policy / mapping / packaging)
+
+---
+
+## Recommended order (best use of your time)
+
+1. Keep this file and the frozen sample set in `docs/` / `data/` as-is.  
+2. Run **Stage A — manual baseline** on `data/sample_issues.csv` **without** pipeline output.  
+3. Run the **current pipeline**: `python src/run_pipeline.py` (see [`pipeline-v0.1.md`](pipeline-v0.1.md)).  
+4. Run **Stage B — MVP-assisted** review using the same rows.  
+5. Record both passes in `data/sample_issues_review_sheet.csv` using [`review-sheet-guide-v0.1.md`](review-sheet-guide-v0.1.md) (short, comparable notes—not essays).  
+6. Answer **one decision question** (below). That answer drives the next sprint.
+
+---
+
+## The one decision question for v0.1
+
+After both stages, answer:
+
+> **Is the largest bottleneck in v0.1 that triage policy is too conservative, or that grounded mapping is too sparse?**
+
+| If the bottleneck is… | Reasonable next moves |
+| --------------------- | --------------------- |
+| **Triage too conservative** | Refine **subfamilies** and guardrails in `known_patterns.json` / triage rules; split families where one label hides multiple operational meanings. |
+| **Mapping too sparse** | Expand **`kb_ticket_mapping.json`** selectively for families that are already stable; keep `do_not_apply` guards. |
+| **Structure is good but packaging is still costly** | Consider **email draft scaffold** (after pattern vs mapping separation is trusted). |
+
+You may still choose evaluation redesign if the pass is inconclusive—this question is the default fork.
+
+---
+
 ## Purpose
 
 This document defines the first evaluation pass for `email-monitoring-triage-copilot`.
@@ -22,62 +69,6 @@ It is also intended to reveal whether the current policy is:
 - appropriately conservative
 - too optimistic
 - or too conservative to reduce reviewer effort
-
----
-
-## Role of this document (not another concept memo)
-
-This file is **not** a duplicate of governance docs. It is where prior methodology (**success definition, failure modes, sample set, patterns, mapping, pipeline**) connects to **first-round empirical validation**.
-
-Use it to run one controlled pass and decide **what to optimize next**, not to restate theory.
-
----
-
-## Two common misreadings to avoid
-
-1. **“The pipeline runs, so the MVP is already valuable.”**  
-   Execution only proves wiring. Value requires **reviewer time, structure reuse, and honest uncertainty** on the frozen sample.
-
-2. **“`review_needed` is high, so the system is useless.”**  
-   High review routing can be appropriate safety posture. Misvalue appears when **reviewers gain no speed or clarity** despite conservative labels—not from the count alone.
-
----
-
-## What actually matters in v0.1
-
-Judge the pass on these, not on surface metrics:
-
-- Whether the reviewer **reaches a safe first-pass triage faster** (or with less cognitive load) than the manual baseline  
-- Whether **structure** (families, labels, mapping flags) is **easier to reuse** across rows  
-- Whether **uncertainty is visible** where it should be (no fake certainty)  
-- **Which layer** deserves the next investment: pattern subfamilies, grounded mapping, or packaging scaffold  
-
----
-
-## Recommended order of use
-
-1. Keep this file in **`docs/`** (this path).  
-2. On the **frozen** sample (`data/sample_issues.csv`), run **Stage A — manual baseline** first.  
-3. Run the **current pipeline**: `python src/run_pipeline.py`.  
-4. Run **Stage B — MVP-assisted** review using that output.  
-5. Record deltas in **`data/sample_issues_review_sheet.csv`** (same columns for both stages; use `reviewer_notes` to contrast baseline vs assisted).  
-6. Answer **one bottleneck question** (below). That answer drives the next build choice.
-
----
-
-## The one bottleneck question (drives the next step)
-
-After Stages A and B, answer only this:
-
-> **Is the main bottleneck in v0.1 that triage is too conservative, or that grounded mapping is too thin?**
-
-| If the bottleneck is… | Likely next focus |
-| --------------------- | ----------------- |
-| **Triage too conservative** (structure is right but everything escalates) | Refine **pattern subfamilies** and triage guards so safe recurring paths are narrower but honest |
-| **Mapping too thin** (family match helps but hints rarely land) | Expand **`kb_ticket_mapping.json`** selectively with grounded rows |
-| **Neither dominates; packaging is still the pain** | Consider **email draft scaffold** (still after the split above is understood) |
-
-Do not skip this question in favor of generic “improve the model.”
 
 ---
 
@@ -189,7 +180,7 @@ Establish how much effort is required to process the sample set without MVP assi
    - which cases required caution
 
 ### Record in review sheet
-Use `data/sample_issues_review_sheet.csv` to capture:
+Use `data/sample_issues_review_sheet.csv` to capture (see [`review-sheet-guide-v0.1.md`](review-sheet-guide-v0.1.md)):
 - `issue_id`
 - `expected_triage_label`
 - `reviewer_agrees_with_broad_category`
@@ -236,7 +227,7 @@ Measure whether the MVP output reduces reviewer effort while preserving safety.
 5. Manually outline how the pipeline output would support packaging for a daily monitoring update.
 
 ### Record in review sheet
-Use `data/sample_issues_review_sheet.csv` to capture:
+Use `data/sample_issues_review_sheet.csv` to capture (see [`review-sheet-guide-v0.1.md`](review-sheet-guide-v0.1.md)):
 - `issue_id`
 - `expected_triage_label`
 - `reviewer_agrees_with_broad_category`
@@ -380,9 +371,8 @@ Fill in after the evaluation pass:
 - Most useful MVP behavior:
 - Least useful MVP behavior:
 - Recommended next step:
-- **Bottleneck (one line):** triage too conservative / mapping too thin / packaging dominant — see [The one bottleneck question](#the-one-bottleneck-question-drives-the-next-step)
 
 ---
 
 ## Version
-v0.2
+v0.1

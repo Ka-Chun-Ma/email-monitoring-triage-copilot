@@ -164,7 +164,7 @@ Use [`data/sample_issues_review_sheet.csv`](../data/sample_issues_review_sheet.c
 | ------ | -------------- |
 | `issue_id` | Matches `sample_issues.csv` |
 | `expected_triage_label` | `likely_recurring` \| `likely_new` \| `review_needed` (MVP triage contract) |
-| `reviewer_agrees_with_broad_category` | `yes` \| `no` |
+| `reviewer_agrees_with_broad_category` | `yes` \| `no` \| `partly` |
 | `reviewer_notes` | Freeform comparison notes |
 
 Keep **`broad_category`** and **`why_this_category` / `would_match_family`** on `sample_issues.csv`; use the review sheet for **per-round** human agreement and notes.

@@ -46,6 +46,11 @@ Stdout is a JSON array of result objects (stderr prints a one-line summary unles
 
 `broad_category` and `why_this_category` on the CSV are **evaluation scaffolding**. Pipeline output may **differ** from `broad_category` by design (e.g. duplicate-key family defaults to `review_needed` in v0.1; timeout rows with missing grounded mapping may still be `likely_recurring` with `mapping_ready: false`). Compare both during validation.
 
+## Related
+
+- First evaluation procedure (manual vs MVP-assisted): [`evaluation-pass-v0.1.md`](evaluation-pass-v0.1.md)  
+- Review sheet column guide: [`review-sheet-guide-v0.1.md`](review-sheet-guide-v0.1.md)
+
 ## Version
 
 v0.1

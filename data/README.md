@@ -15,7 +15,7 @@ See [`docs/evaluation-sample-set.md`](../docs/evaluation-sample-set.md) (CSV-fir
 | File | Role |
 | ---- | ---- |
 | `sample_issues.csv` | **v1 candidate (12 rows):** distribution 3 / 2 / 3 / 2 / 2; includes `why_this_category` and `would_match_family` (`yes` / `no` / `maybe`) per row. See [`docs/sample-issues-workflow.md`](../docs/sample-issues-workflow.md). |
-| `sample_issues_review_sheet.csv` | **Manual baseline / MVP-assisted review:** `expected_triage_label` (`likely_recurring` \| `likely_new` \| `review_needed`), `reviewer_agrees_with_broad_category` (`yes` \| `no`), `reviewer_notes`. Filled per validation round; not a substitute for `broad_category` / `why_this_category` on `sample_issues.csv`. |
+| `sample_issues_review_sheet.csv` | **Manual baseline / MVP-assisted:** `expected_triage_label`, `reviewer_agrees_with_broad_category` (`yes` \| `no` \| `partly`), `reviewer_notes`. How to fill: [`docs/review-sheet-guide-v0.1.md`](../docs/review-sheet-guide-v0.1.md). Full pass: [`docs/evaluation-pass-v0.1.md`](../docs/evaluation-pass-v0.1.md). |
 | `known_patterns.json` | v0.1 — conservative pattern families; match ≠ safe recurring (see `triage_policy_notes`). |
 | `kb_ticket_mapping.json` | v0.1 — grounded hints only where stable; `do_not_apply_if_contains_any` + `intentional_missing_mappings`. |
 
