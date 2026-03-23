@@ -13,7 +13,7 @@ Round 2 is **not expansion**. It is **precision** on the **highest-friction, hig
 | **Seeing sparse mapping and rushing to add mappings** | If **triage granularity** is not stable yet, more mapping mostly creates **fake maturity**—suggestions look complete before judgment is. |
 | **Seeing many `review_needed` and loosening rules** | “Relaxing” rules to reduce volume can **sink** replay / context-poor cases into **false safe recurring**—exactly what this project refuses to do. |
 
-After patterns v0.2 + pipeline v0.2 are in place, run the **round-2 judgment test** documented in [`evaluation-pass-v0.2-round2.md`](evaluation-pass-v0.2-round2.md) (three gates, audit table, micro + full rerun). Use [`round-2-evaluation-note-v0.1.md`](round-2-evaluation-note-v0.1.md) as a short fill-in companion.
+After patterns v0.2 + pipeline v0.2 are in place, run the **round-2 judgment test** documented in [`evaluation-pass-v0.2-round2.md`](evaluation-pass-v0.2-round2.md) (three gates, audit table, micro + full rerun). Use [`round-2-evaluation-note-v0.2.md`](round-2-evaluation-note-v0.2.md) as a short fill-in companion.
 
 ### Most natural next step (before more code)
 

@@ -264,7 +264,7 @@ That is the standard for round 2.
 
 - `data/known_patterns.json` **v0.2** encodes **PAT-001A / B / C** (see file `version` and `issue_subfamily` fields).
 - `src/run_pipeline.py` **v0.2** routes triage by matched sub-pattern and emits **`issue_subfamily`** in JSON output. Details: [`pipeline-v0.2.md`](pipeline-v0.2.md).
-- After rerun, capture **001 / 011** watch points and A/B/C checks in [`round-2-evaluation-note-v0.1.md`](round-2-evaluation-note-v0.1.md).
+- After rerun, capture **001 / 011** watch points and gates in [`round-2-evaluation-note-v0.2.md`](round-2-evaluation-note-v0.2.md).
 
 ## Version
 v0.1.2 (working labels + v0.2 pattern/pipeline reference)
