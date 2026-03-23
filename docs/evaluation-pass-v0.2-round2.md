@@ -1,6 +1,6 @@
 # Evaluation Pass v0.2 — Round 2 (Duplicate Refinement Judgment Test)
 
-**Companion:** Shorter fill-in checklist: [`round-2-evaluation-note-v0.2.md`](round-2-evaluation-note-v0.2.md). This document is the **full audit framework** for the same pass.
+**Companion:** Shorter fill-in checklist: [`round-2-evaluation-note-v0.2.md`](round-2-evaluation-note-v0.2.md). First **filled** duplicate-row evidence: [`round-2-evaluation-note-v0.2-filled-actual-run.md`](round-2-evaluation-note-v0.2-filled-actual-run.md). This document is the **full audit framework** for the same pass.
 
 ---
 

@@ -204,6 +204,15 @@ Fill one line and explain why.
 
 ---
 
+## Filled examples (evidence, not more template work)
+
+- **Actual run (first evidence file):** [`round-2-evaluation-note-v0.2-filled-actual-run.md`](round-2-evaluation-note-v0.2-filled-actual-run.md) — populated from real `run_pipeline.py` output; **human reviewer** should confirm and date.
+- **Mock scenarios B / C (calibration only, not real state):** [`round-2-evaluation-mock-scenarios.md`](round-2-evaluation-mock-scenarios.md)
+
+After **your** rerun, copy the template above or edit the filled file in place — the goal is **one** auditable filled note, not endless template edits.
+
+---
+
 ## Version
 
 v0.2
