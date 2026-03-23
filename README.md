@@ -20,7 +20,8 @@ Deterministic-first, human-in-the-loop workflow to reduce triage and daily monit
 | [docs/evaluator-summary-v0.1-round1.md](docs/evaluator-summary-v0.1-round1.md) | Example filled summary (round 1, simulated) |
 | [docs/round-2-plan-v0.1.md](docs/round-2-plan-v0.1.md) | Round 2: refine duplicate judgment boundary (not scope expansion) |
 | [docs/duplicate-subfamily-working-note-v0.1.md](docs/duplicate-subfamily-working-note-v0.1.md) | Human pass before code: canonical / context-poor / replay / mapping uncertainty |
-| [docs/round-2-evaluation-note-v0.1.md](docs/round-2-evaluation-note-v0.1.md) | Focused rerun checklist after patterns v0.2 (001 / 006 / 008 / 011) |
+| [docs/round-2-evaluation-note-v0.1.md](docs/round-2-evaluation-note-v0.1.md) | Short checklist: duplicate rerun (001 / 006 / 008 / 011) |
+| [docs/evaluation-pass-v0.2-round2.md](docs/evaluation-pass-v0.2-round2.md) | Full round-2 judgment test: safety / precision / complexity gates |
 
 ## Setup (local)
 

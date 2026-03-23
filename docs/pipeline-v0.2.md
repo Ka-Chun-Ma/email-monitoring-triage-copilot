@@ -21,7 +21,7 @@ Same as v0.1:
 python src/run_pipeline.py
 ```
 
-See also [`pipeline-v0.1.md`](pipeline-v0.1.md) for field definitions and [`round-2-plan-v0.1.md`](round-2-plan-v0.1.md) for rationale.
+See also [`pipeline-v0.1.md`](pipeline-v0.1.md) for field definitions, [`round-2-plan-v0.1.md`](round-2-plan-v0.1.md) for rationale, and [`evaluation-pass-v0.2-round2.md`](evaluation-pass-v0.2-round2.md) for how to **prove** refinement (safety / precision / complexity gates).
 
 ## Version
 

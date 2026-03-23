@@ -1,6 +1,8 @@
 # Round 2 Focused Evaluation Note v0.1
 
-**Purpose:** Record a **very small, focused rerun** after `known_patterns.json` v0.2 and `run_pipeline.py` v0.2 — not to expand scope, but to answer whether duplicate subfamily refinement is **more useful** or **only more complex**.
+**Full judgment framework (gates, audit table, pass criteria):** [`evaluation-pass-v0.2-round2.md`](evaluation-pass-v0.2-round2.md)
+
+**Purpose:** Record a **very small, focused rerun** after `known_patterns.json` v0.2 and `src/run_pipeline.py` v0.2 — not to expand scope, but to answer whether duplicate subfamily refinement is **more useful** or **only more complex**.
 
 **Prerequisites:** Frozen `data/sample_issues.csv`; run:
 
