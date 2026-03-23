@@ -13,6 +13,7 @@ Deterministic-first, human-in-the-loop workflow to reduce triage and daily monit
 | [docs/mvp-boundary.md](docs/mvp-boundary.md) | In-scope / out-of-scope for MVP |
 | [docs/failure-modes.md](docs/failure-modes.md) | Acceptable vs unacceptable failures |
 | [docs/pipeline-v0.1.md](docs/pipeline-v0.1.md) | Minimal pipeline: family match → triage → grounded mapping |
+| [docs/pipeline-v0.2.md](docs/pipeline-v0.2.md) | v0.2: duplicate subfamilies + `issue_subfamily` field |
 | [docs/evaluation-pass-v0.1.md](docs/evaluation-pass-v0.1.md) | First hands-on evaluation: manual baseline vs MVP-assisted, bottleneck question |
 | [docs/review-sheet-guide-v0.1.md](docs/review-sheet-guide-v0.1.md) | How to fill `sample_issues_review_sheet.csv` (comparable, short notes) |
 | [docs/evaluator-summary-template-v0.1.md](docs/evaluator-summary-template-v0.1.md) | Blank template for post-pass evaluator summary |
@@ -36,7 +37,7 @@ Deterministic family match, triage candidate, and mapping layer (no email draft)
 python src/run_pipeline.py
 ```
 
-See [docs/pipeline-v0.1.md](docs/pipeline-v0.1.md).
+See [docs/pipeline-v0.1.md](docs/pipeline-v0.1.md) and [docs/pipeline-v0.2.md](docs/pipeline-v0.2.md) (duplicate v0.2).
 
 ## Publish to GitHub
 

@@ -1,5 +1,7 @@
 # Pipeline v0.1 (`src/run_pipeline.py`)
 
+**Update:** Duplicate-key subfamilies and `issue_subfamily` output are documented in [`pipeline-v0.2.md`](pipeline-v0.2.md). The executable is a single `run_pipeline.py`; behavior follows `data/known_patterns.json` `version`.
+
 ## Purpose
 
 Minimal runnable slice that **keeps three concerns separate**:

@@ -136,6 +136,12 @@ Filled for **ISS-EVAL-001**, **006**, **008**, **011** only. Adjust later if the
 
 **Source CSV columns (for traceability):** `ISS-EVAL-001` — `known_recurring`; `006` — `review_needed`; `008` — `safety_challenge`; `011` — `missing_mapping`. `would_match_family` on the sample CSV remains the evaluation scaffold from v1.
 
+### Initial round-2 judgment
+At this stage, only ISS-EVAL-001 looks like a possible candidate for a narrower recurring posture later.
+ISS-EVAL-006 should remain protected as a context-poor duplicate.
+ISS-EVAL-008 should remain protected as a replay / semantic-drift duplicate.
+ISS-EVAL-011 should remain protected until duplicate-family mapping readiness is better understood.
+
 ---
 
 ## How to use this working table
@@ -254,5 +260,10 @@ It should only be refined if:
 
 That is the standard for round 2.
 
+## Implementation note (patterns + pipeline)
+
+- `data/known_patterns.json` **v0.2** encodes **PAT-001A / B / C** (see file `version` and `issue_subfamily` fields).
+- `src/run_pipeline.py` **v0.2** routes triage by matched sub-pattern and emits **`issue_subfamily`** in JSON output. Details: [`pipeline-v0.2.md`](pipeline-v0.2.md).
+
 ## Version
-v0.1.1 (four-row initial subfamily labels filled for round 2 entry)
+v0.1.2 (working labels + v0.2 pattern/pipeline reference)

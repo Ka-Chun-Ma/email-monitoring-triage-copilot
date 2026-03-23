@@ -20,7 +20,7 @@ See [`docs/evaluation-sample-set.md`](../docs/evaluation-sample-set.md) (CSV-fir
 | `sample_issues_review_sheet_mvp_assisted.csv` | Example **Stage B** fill (simulated round 1). |
 | Review sheet how-to | [`docs/review-sheet-guide-v0.1.md`](../docs/review-sheet-guide-v0.1.md). Full pass: [`docs/evaluation-pass-v0.1.md`](../docs/evaluation-pass-v0.1.md). |
 | Evaluator summary | Template: [`docs/evaluator-summary-template-v0.1.md`](../docs/evaluator-summary-template-v0.1.md). Filled example: [`docs/evaluator-summary-v0.1-round1.md`](../docs/evaluator-summary-v0.1-round1.md). |
-| `known_patterns.json` | v0.1 — conservative pattern families; match ≠ safe recurring (see `triage_policy_notes`). |
+| `known_patterns.json` | **v0.2** — `duplicate_key_violation` split into canonical / context_poor / replay_semantic_drift sub-patterns; timeout and file unchanged. |
 | `kb_ticket_mapping.json` | v0.1 — grounded hints only where stable; `do_not_apply_if_contains_any` + `intentional_missing_mappings`. |
 
 **Runnable slice:** `python src/run_pipeline.py` reads the CSV and both JSON files (see [docs/pipeline-v0.1.md](../docs/pipeline-v0.1.md)).

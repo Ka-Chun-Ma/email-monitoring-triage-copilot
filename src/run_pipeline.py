@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """
-run_pipeline.py v0.1 — minimal deterministic pipeline.
+run_pipeline.py v0.2 — minimal deterministic pipeline.
 
 Three-layer flow (must stay separate):
 1) Family match from known_patterns.json — pattern match != safe triage.
-2) Triage posture — not every family match => likely_recurring.
+2) Triage posture — not every family match => likely_recurring; duplicate v0.2 uses subfamilies.
 3) Grounded mapping from kb_ticket_mapping.json — family match != KB/ticket/owner.
 
 Does not generate email drafts (see project docs).
@@ -89,8 +89,17 @@ def _find_mapping_for_row(
     return None
 
 
-def _triage_for_duplicate_v01() -> str:
-    # Policy: v0.1 never promotes duplicate_key family to likely_recurring.
+def _triage_for_duplicate_v02(
+    raw_message: str,
+    pattern: dict[str, Any],
+) -> str:
+    """v0.2: PAT-001A may yield likely_recurring; 001B/001C stay review_needed per pattern defaults."""
+    esc = pattern.get("escalate_to_review_if_contains_any") or []
+    if esc and _contains_any(raw_message, esc):
+        return "review_needed"
+    default = pattern.get("recommended_default_triage") or "review_needed"
+    if default in ("likely_recurring", "likely_new", "review_needed"):
+        return default
     return "review_needed"
 
 
@@ -137,13 +146,14 @@ def run(
             matched = _first_matching_pattern(raw, patterns)
             matched_family = matched["issue_family"] if matched else None
             matched_pattern_id = matched["pattern_id"] if matched else None
+            issue_subfamily = matched.get("issue_subfamily") if matched else None
 
             would_escalate = False
             triage = "likely_new"
             if matched:
                 fam = matched_family or ""
                 if fam == "duplicate_key_violation":
-                    triage = _triage_for_duplicate_v01()
+                    triage = _triage_for_duplicate_v02(raw, matched)
                 elif fam == "timeout_threshold_exceeded":
                     triage = _triage_for_timeout_v01(raw, matched)
                 elif fam == "reference_file_missing":
@@ -168,6 +178,7 @@ def run(
                     "source_system": row.get("source_system"),
                     "module_or_domain": row.get("module_or_domain"),
                     "matched_family": matched_family,
+                    "issue_subfamily": issue_subfamily,
                     "matched_pattern_id": matched_pattern_id,
                     "would_escalate_review": would_escalate,
                     "triage_label_candidate": triage,
@@ -184,7 +195,7 @@ def run(
 
 def main() -> int:
     root = Path(__file__).resolve().parent.parent
-    p = argparse.ArgumentParser(description="Run v0.1 family match + triage + mapping layers.")
+    p = argparse.ArgumentParser(description="Run v0.2 family match + triage + mapping layers.")
     p.add_argument("--sample", type=Path, default=root / "data" / "sample_issues.csv")
     p.add_argument("--patterns", type=Path, default=root / "data" / "known_patterns.json")
     p.add_argument("--kb", type=Path, default=root / "data" / "kb_ticket_mapping.json")
@@ -204,7 +215,7 @@ def main() -> int:
         mapping_ok = sum(1 for r in out if r["mapping_ready"])
         review = sum(1 for r in out if r["triage_label_candidate"] == "review_needed")
         print(
-            f"[run_pipeline v0.1] rows={n} matched_family={matched} "
+            f"[run_pipeline v0.2] rows={n} matched_family={matched} "
             f"mapping_ready={mapping_ok} triage_review_needed={review}",
             file=sys.stderr,
         )
