@@ -1,5 +1,7 @@
 # Round 2 Focused Evaluation Note v0.2
 
+**Status — template frozen:** Do not revise this document’s structure or gates. New work belongs in **generalization evidence** and filled runs, not more template churn. See [`canonical-duplicate-generalization-next-v0.1.md`](canonical-duplicate-generalization-next-v0.1.md).
+
 **Purpose:** Record a very small, focused rerun after `data/known_patterns.json` v0.2 and `src/run_pipeline.py` v0.2.
 
 This round is not for scope expansion.  

@@ -15,6 +15,8 @@ Round 2 is **not expansion**. It is **precision** on the **highest-friction, hig
 
 After patterns v0.2 + pipeline v0.2 are in place, run the **round-2 judgment test** documented in [`evaluation-pass-v0.2-round2.md`](evaluation-pass-v0.2-round2.md) (three gates, audit table, micro + full rerun). Use [`round-2-evaluation-note-v0.2.md`](round-2-evaluation-note-v0.2.md) as a short fill-in companion.
 
+Once that note is **filled** with real pipeline output, treat the **v0.2 evaluation note as frozen** (do not keep rewriting its structure). The next high-value step is **generalization evidence** for canonical duplicate — not more template churn. See [`canonical-duplicate-generalization-next-v0.1.md`](canonical-duplicate-generalization-next-v0.1.md).
+
 ### Most natural next step (before more code)
 
 Do **not** start with a large code change. Start with a **small human working note** that classifies duplicate rows into:
