@@ -13,6 +13,8 @@ Round 2 is **not expansion**. It is **precision** on the **highest-friction, hig
 | **Seeing sparse mapping and rushing to add mappings** | If **triage granularity** is not stable yet, more mapping mostly creates **fake maturity**—suggestions look complete before judgment is. |
 | **Seeing many `review_needed` and loosening rules** | “Relaxing” rules to reduce volume can **sink** replay / context-poor cases into **false safe recurring**—exactly what this project refuses to do. |
 
+After patterns v0.2 + pipeline v0.2 are in place, run a **focused evaluation** and record it in [`round-2-evaluation-note-v0.1.md`](round-2-evaluation-note-v0.1.md) (especially **001** posture change and **011** / `context_poor` vs mapping-uncertainty visibility).
+
 ### Most natural next step (before more code)
 
 Do **not** start with a large code change. Start with a **small human working note** that classifies duplicate rows into:
